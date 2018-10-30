@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 
 class CrimesList extends Component {
+  handleDelete = (e) => {
+    this.props.deleteCrime(e.currentTarget.id);
+  }
   render(){
 
     // How do I render lists in React
@@ -10,6 +13,7 @@ class CrimesList extends Component {
         <li key={i}>
           Description: {crime.description} <br/>
           Date: {crime.date} <br/>
+          <button id={i} onClick={this.handleDelete}>Delete</button>
         </li>
         )
     });

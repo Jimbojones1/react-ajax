@@ -54,10 +54,23 @@ class App extends Component {
     // This is where we make get requests if we want are data to be loaded on the page
     // immediatly
   }
+  deleteCrime = (indexOfTheCrime) => {
+    console.log(typeof indexOfTheCrime, ' this is the index of the crime in the app component');
+
+    //So we are checking for the index's that don't match because those are the ones
+    // that are not being deleted
+
+    // Filter returns a brand new array for us, this along the functional paradigm,
+    // we want to try to treat data as being immutable,
+    // treating data as immutable we want to return new objects
+    this.setState({
+      crimes: this.state.crimes.filter((crime, index) => index !== parseInt(indexOfTheCrime))
+    });
+  }
   render() {
     return (
       <div className="App">
-        <CrimesList crimes={this.state.crimes} />
+        <CrimesList crimes={this.state.crimes} deleteCrime={this.deleteCrime} />
       </div>
     );
   }
