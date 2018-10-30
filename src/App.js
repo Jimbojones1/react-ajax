@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import CrimesList from './CrimesList';
 import './App.css';
 
 // https://data.cityofchicago.org/resource/crimes.json
@@ -29,8 +29,17 @@ class App extends Component {
 
   componentDidMount(){
 
-    this.getCrimes().then((data) => {
-      console.log(data, ' this is data');
+    // we are using a Promise, .then, wafter this function returns whatever it is returning
+    // in our case crimesJson
+    this.getCrimes().then((crimes) => {
+      console.log(crimes, ' this is data');
+
+      this.setState({crimes: crimes});
+
+    }).catch((err) => {
+
+      console.log(err);
+
     });
 
     // componentDidMount, like render, and constructor are part of the component lifectyle,
@@ -48,7 +57,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+        <CrimesList crimes={this.state.crimes} />
       </div>
     );
   }
