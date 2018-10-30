@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CrimesList from './CrimesList';
 import './App.css';
+import { Container } from 'semantic-ui-react';
 
 // https://data.cityofchicago.org/resource/crimes.json
 class App extends Component {
@@ -55,7 +56,7 @@ class App extends Component {
     // immediatly
   }
   deleteCrime = (indexOfTheCrime) => {
-    console.log(typeof indexOfTheCrime, ' this is the index of the crime in the app component');
+    console.log(indexOfTheCrime, ' this is the index of the crime in the app component');
 
     //So we are checking for the index's that don't match because those are the ones
     // that are not being deleted
@@ -69,9 +70,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <CrimesList crimes={this.state.crimes} deleteCrime={this.deleteCrime} />
-      </div>
+      <Container>
+
+          <CrimesList crimes={this.state.crimes} deleteCrime={this.deleteCrime} />
+      </Container>
     );
   }
 }

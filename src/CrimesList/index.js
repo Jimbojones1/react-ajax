@@ -1,33 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Header, Card, Icon } from 'semantic-ui-react';
 
-
-class CrimesList extends Component {
-  handleDelete = (e) => {
-    this.props.deleteCrime(e.currentTarget.id);
-  }
-  render(){
-
-    // How do I render lists in React
-    const crimesList = this.props.crimes.map((crime, i) => {
+const CrimesList = (props) => {
+      // How do I render lists in React
+    const crimesList = props.crimes.map((crime, i) => {
       return (
-        <li key={i}>
-          Description: {crime.description} <br/>
-          Date: {crime.date} <br/>
-          <button id={i} onClick={this.handleDelete}>Delete</button>
-        </li>
+
+          <Card color='red' key={i} style={{maxWidth: 300}} >
+            <Card.Header textAlign='right'><Icon name='delete' onClick={props.deleteCrime.bind(null, i)}/></Card.Header>
+            <Card.Content>
+              <Card.Header>Date: {crime.date}</Card.Header>
+              <Card.Description>{crime.description}</Card.Description>
+
+            </Card.Content>
+          </Card>
+
         )
     });
 
     return (
       <div>
-        <h4>CrimesList</h4>
-        <ul>
-          {crimesList}
-        </ul>
+        <Header as='h2' size="huge">CrimesList</Header>
+        <Card.Group>{crimesList}</Card.Group>
       </div>
       )
-  }
 }
+
+
 
 
 export default CrimesList;
