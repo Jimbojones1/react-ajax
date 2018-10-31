@@ -21,7 +21,7 @@ const CrimesList = (props) => {
     return (
       <div>
         <Header as='h2' size="huge" >CrimesList</Header>
-        <Transition.Group duration={200} animation={'fly up'} as={Card.Group} children={crimesList}></Transition.Group>
+        <Transition.Group duration={300} animation={'fly up'} as={Card.Group} children={crimesList}></Transition.Group>
       </div>
       )
 }

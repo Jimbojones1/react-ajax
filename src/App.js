@@ -37,8 +37,10 @@ class App extends Component {
       // console.log(crimes, ' this is data');
 
 
-      console.log(crimes)
-      this.setState({crimes: crimes});
+      // console.log(crimes)
+      const crimeArray = crimes.slice(crimes.length - 100)
+      console.log(crimeArray)
+      this.setState({crimes: crimeArray});
 
     }).catch((err) => {
 
