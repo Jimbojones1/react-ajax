@@ -20,7 +20,8 @@ class App extends Component {
       // The response from api's is in JSON, notice the end of the crimes.json
       // so we have to parse that into a regular object so we can use it.
       const crimesJson = await crimes.json();
-      return crimesJson
+
+      return crimesJson;
 
     } catch(err){
       return err
@@ -33,8 +34,10 @@ class App extends Component {
     // we are using a Promise, .then, wafter this function returns whatever it is returning
     // in our case crimesJson
     this.getCrimes().then((crimes) => {
-      console.log(crimes, ' this is data');
+      // console.log(crimes, ' this is data');
 
+
+      console.log(crimes)
       this.setState({crimes: crimes});
 
     }).catch((err) => {
@@ -65,13 +68,12 @@ class App extends Component {
     // we want to try to treat data as being immutable,
     // treating data as immutable we want to return new objects
     this.setState({
-      crimes: this.state.crimes.filter((crime, index) => index !== parseInt(indexOfTheCrime))
+      crimes: this.state.crimes.filter((crime, index) => crime.id !== indexOfTheCrime)
     });
   }
   render() {
     return (
       <Container>
-
           <CrimesList crimes={this.state.crimes} deleteCrime={this.deleteCrime} />
       </Container>
     );
